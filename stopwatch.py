@@ -1,19 +1,27 @@
-import time
+
 # Display the program's instructions.
 print('Press ENTER to begin. Afterwards, press ENTER to "click" the stopwatch.Press Ctrl-C to quit.')
 input() # press Enter to begin
 print('Started')
-startTime = time.time() # get the first lap's start time
-lastTime = startTime
-lapNum = 1
+sec = 1
+minu = 0
+hours = 0
 try:
-     while True:
-        input()
-        lapTime = round(time.time() - lastTime, 2)
-        totalTime = round(time.time() - startTime, 2)
-        print('Lap #%s: %s (%s)' % (lapNum, totalTime, lapTime), end='')
-        lapNum += 1
-        lastTime = time.time() # reset the last lap time
+    input()
+    while True:
+        print(minu,":",sec, end="\r")
+        if sec==60:
+            sec=0
+        else:
+            sec +=1
+        if minu==60:
+            minu=0
+        else:
+            minu+=1
+        if hours==24:
+            hours+=1
+            
+        time.sleep(1)
 except KeyboardInterrupt:
  # Handle the Ctrl-C exception to keep its error message from displaying.
     print('\nDone.')
